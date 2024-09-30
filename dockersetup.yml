@@ -1,0 +1,19 @@
+#cloud-config
+users:
+  - name: i
+    passwd: "$6$B9ee2mT6H8mdpWfJ$UtzaU32IZ8.HIpq8bhQv/oVKWiIsz5nFfUjAu/egOkLT0JmVyFRrTNuHyd9RKzVcn3hdaes9rC9/G8K8zuOxy1"
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: sudo
+    shell: /bin/bash
+
+package_update: true
+package_upgrade: true
+packages:
+  - curl
+
+runcmd:
+  - unlink /etc/localtime
+  - ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+  - curl -fsSL https://get.docker.com | sh
+  - systemctl start docker
+  - systemctl enable docker
