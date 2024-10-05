@@ -1,3 +1,16 @@
+# Ignore variable files that may contain sensitive information
+*.tfvars
 vars.tf
-terraform.tfstate
-tf
+
+# Ignore Terraform state files (these can contain sensitive data like credentials)
+*.tfstate
+*.tfstate.backup
+
+# Ignore the Terraform lock file
+.terraform.lock.hcl
+
+# Ignore hidden Terraform directories
+.terraform/
+
+# Optional: Ignore any environment files that might contain sensitive info
+.env
